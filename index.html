@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FortiPass — Password Security</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+    <div class="app">
+
+        <!-- ================================================= -->
+        <!-- SIDEBAR -->
+        <!-- ================================================= -->
+
+        <aside class="sidebar">
+
+            <div class="brand">
+
+                <div class="brand-logo">
+                    <span>✦</span>
+                </div>
+
+                <div>
+                    <h2>FortiPass</h2>
+                    <p>Security Lab</p>
+                </div>
+
+            </div>
+
+
+            <div class="nav-label">
+                SECURITY
+            </div>
+
+
+            <nav>
+
+                <a href="#dashboard" class="nav-item active">
+                    <span class="nav-icon">⌂</span>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="#analyzer" class="nav-item">
+                    <span class="nav-icon">◈</span>
+                    <span>Password Analyzer</span>
+                </a>
+
+                <a href="#threats" class="nav-item">
+                    <span class="nav-icon">◉</span>
+                    <span>Threat Analysis</span>
+                </a>
+
+                <a href="#recommendations" class="nav-item">
+                    <span class="nav-icon">✧</span>
+                    <span>Recommendations</span>
+                </a>
+
+            </nav>
+
+
+            <div class="nav-label">
+                RESOURCES
+            </div>
+
+
+            <nav>
+
+                <a href="#guide" class="nav-item">
+                    <span class="nav-icon">?</span>
+                    <span>Security Guide</span>
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <div class="privacy-card">
+
+                    <div class="privacy-glow"></div>
+
+                    <div class="privacy-icon">
+                        ♢
+                    </div>
+
+                    <strong>Privacy Protected</strong>
+
+                    <p>
+                        Analysis happens locally in
+                        your browser.
+                    </p>
+
+                </div>
+
+
+                <div class="sidebar-status">
+
+                    <span class="online-dot"></span>
+
+                    Security engine online
+
+                </div>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- ================================================= -->
+        <!-- MAIN -->
+        <!-- ================================================= -->
+
+        <main class="main" id="dashboard">
+
+
+            <!-- HEADER -->
+
+            <header class="topbar">
+
+                <div>
+
+                    <div class="page-tag">
+                        <span></span>
+                        LIVE SECURITY ANALYSIS
+                    </div>
+
+                    <h1>
+                        Password
+                        <span>Security Lab</span>
+                    </h1>
+
+                    <p>
+                        Analyze password resilience against common
+                        guessing and pattern-based attacks.
+                    </p>
+
+                </div>
+
+
+                <div class="top-actions">
+
+                    <div class="secure-pill">
+                        <span class="pulse"></span>
+                        LOCAL ONLY
+                    </div>
+
+                    <button id="themeButton" class="icon-button" aria-label="Toggle theme">
+                        ☾
+                    </button>
+
+                </div>
+
+            </header>
+
+
+
+            <!-- ================================================= -->
+            <!-- HERO ANALYZER -->
+            <!-- ================================================= -->
+
+            <section class="hero-grid" id="analyzer">
+
+
+                <!-- PASSWORD PANEL -->
+
+                <div class="glass-card analyzer-panel">
+
+                    <div class="panel-heading">
+
+                        <div>
+
+                            <span class="mini-label">
+                                PASSWORD ANALYZER
+                            </span>
+
+                            <h2>
+                                Test your password
+                            </h2>
+
+                            <p>
+                                Your password is analyzed locally
+                                and never sent anywhere.
+                            </p>
+
+                        </div>
+
+                        <div class="shield-symbol">
+                            ♢
+                        </div>
+
+                    </div>
+
+
+                    <!-- INPUT -->
+
+                    <div class="password-box">
+
+                        <div class="input-status">
+                            <span class="status-dot"></span>
+                            LOCAL ANALYSIS
+                        </div>
+
+                        <div class="input-row">
+
+                            <span class="lock-icon">
+                                ◆
+                            </span>
+
+                            <input id="password" type="password" autocomplete="new-password"
+                                placeholder="Enter a password to analyze...">
+
+                            <button id="togglePassword" type="button" class="eye-button">
+                                ◉
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- STRENGTH -->
+
+                    <div class="strength-area">
+
+                        <div class="strength-top">
+
+                            <span>
+                                Password resilience
+                            </span>
+
+                            <strong id="strengthText">
+                                Waiting
+                            </strong>
+
+                        </div>
+
+
+                        <div class="strength-track">
+
+                            <div id="strengthProgress" class="strength-progress"></div>
+
+                        </div>
+
+
+                        <div class="strength-scale">
+
+                            <span>WEAK</span>
+                            <span>MODERATE</span>
+                            <span>STRONG</span>
+                            <span>EXCELLENT</span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SCORE -->
+
+                    <div class="score-section">
+
+                        <div class="score-ring" id="scoreCircle">
+
+                            <div class="score-ring-inner">
+
+                                <div class="score-number" id="score">
+                                    0
+                                </div>
+
+                                <div class="score-max">
+                                    /100
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="score-copy">
+
+                            <div class="score-badge" id="scoreBadge">
+                                ANALYSIS REQUIRED
+                            </div>
+
+                            <h3 id="scoreTitle">
+                                Enter your password
+                            </h3>
+
+                            <p id="scoreDescription">
+                                Your security score will appear
+                                here after analysis.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- SECURITY OVERVIEW -->
+
+                <div class="glass-card overview-panel">
+
+                    <div class="panel-heading compact">
+
+                        <div>
+
+                            <span class="mini-label">
+                                SECURITY OVERVIEW
+                            </span>
+
+                            <h2>
+                                Protection status
+                            </h2>
+
+                        </div>
+
+                        <div class="live-indicator">
+                            <span></span>
+                            LIVE
+                        </div>
+
+                    </div>
+
+
+                    <div class="overview-items" id="threats">
+
+
+                        <div class="security-check">
+
+                            <div class="check-icon" id="lengthIcon">
+                                —
+                            </div>
+
+                            <div class="check-content">
+
+                                <div class="check-title">
+                                    Password length
+                                </div>
+
+                                <p id="lengthResult">
+                                    Waiting for analysis
+                                </p>
+
+                            </div>
+
+                            <span class="check-status" id="lengthStatus">
+                                —
+                            </span>
+
+                        </div>
+
+
+                        <div class="security-check">
+
+                            <div class="check-icon" id="complexityIcon">
+                                —
+                            </div>
+
+                            <div class="check-content">
+
+                                <div class="check-title">
+                                    Character diversity
+                                </div>
+
+                                <p id="complexityResult">
+                                    Waiting for analysis
+                                </p>
+
+                            </div>
+
+                            <span class="check-status" id="complexityStatus">
+                                —
+                            </span>
+
+                        </div>
+
+
+                        <div class="security-check">
+
+                            <div class="check-icon" id="patternIcon">
+                                —
+                            </div>
+
+                            <div class="check-content">
+
+                                <div class="check-title">
+                                    Predictable patterns
+                                </div>
+
+                                <p id="patternResult">
+                                    Waiting for analysis
+                                </p>
+
+                            </div>
+
+                            <span class="check-status" id="patternStatus">
+                                —
+                            </span>
+
+                        </div>
+
+
+                        <div class="security-check">
+
+                            <div class="check-icon" id="entropyIcon">
+                                —
+                            </div>
+
+                            <div class="check-content">
+
+                                <div class="check-title">
+                                    Estimated entropy
+                                </div>
+
+                                <p id="entropyResult">
+                                    Waiting for analysis
+                                </p>
+
+                            </div>
+
+                            <span class="check-status" id="entropyStatus">
+                                —
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="overview-footer">
+
+                        <span>
+                            ◉
+                            No password leaves your browser
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ================================================= -->
+            <!-- METRICS -->
+            <!-- ================================================= -->
+
+            <section class="metrics-grid">
+
+
+                <div class="metric glass-card">
+
+                    <div class="metric-icon purple">
+                        #
+                    </div>
+
+                    <div class="metric-data">
+
+                        <span>
+                            PASSWORD LENGTH
+                        </span>
+
+                        <strong id="lengthMetric">
+                            0
+                        </strong>
+
+                        <small>
+                            characters
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="metric glass-card">
+
+                    <div class="metric-icon blue">
+                        ◇
+                    </div>
+
+                    <div class="metric-data">
+
+                        <span>
+                            CHARACTER TYPES
+                        </span>
+
+                        <strong id="typesMetric">
+                            0
+                        </strong>
+
+                        <small>
+                            / 4 types
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="metric glass-card">
+
+                    <div class="metric-icon green">
+                        ⚡
+                    </div>
+
+                    <div class="metric-data">
+
+                        <span>
+                            EST. ENTROPY
+                        </span>
+
+                        <strong id="entropyMetric">
+                            0
+                        </strong>
+
+                        <small>
+                            bits
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="metric glass-card">
+
+                    <div class="metric-icon red">
+                        !
+                    </div>
+
+                    <div class="metric-data">
+
+                        <span>
+                            SECURITY ISSUES
+                        </span>
+
+                        <strong id="issuesMetric">
+                            0
+                        </strong>
+
+                        <small>
+                            detected
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ================================================= -->
+            <!-- REQUIREMENTS -->
+            <!-- ================================================= -->
+
+            <section class="glass-card requirements-section">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <span class="mini-label">
+                            SECURITY CHECKLIST
+                        </span>
+
+                        <h2>
+                            What makes a strong password?
+                        </h2>
+
+                    </div>
+
+                    <div class="completion">
+                        <span id="completionText">
+                            0 / 6
+                        </span>
+                        checks passed
+                    </div>
+
+                </div>
+
+
+                <div class="requirements-grid">
+
+
+                    <div class="requirement" id="requirementLength">
+
+                        <div class="requirement-check">
+                            ✓
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                12+ characters
+                            </strong>
+
+                            <p>
+                                Prefer long passwords or passphrases.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="requirement" id="requirementUpper">
+
+                        <div class="requirement-check">
+                            ✓
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Uppercase letters
+                            </strong>
+
+                            <p>
+                                Add uppercase characters when useful.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="requirement" id="requirementLower">
+
+                        <div class="requirement-check">
+                            ✓
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Lowercase letters
+                            </strong>
+
+                            <p>
+                                Include lowercase characters.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="requirement" id="requirementNumber">
+
+                        <div class="requirement-check">
+                            ✓
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Numbers
+                            </strong>
+
+                            <p>
+                                Include numbers when appropriate.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="requirement" id="requirementSpecial">
+
+                        <div class="requirement-check">
+                            ✓
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Special characters
+                            </strong>
+
+                            <p>
+                                Symbols increase character diversity.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="requirement" id="requirementUnique">
+
+                        <div class="requirement-check">
+                            ✓
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                No obvious patterns
+                            </strong>
+
+                            <p>
+                                Avoid sequences and repetitions.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ================================================= -->
+            <!-- RECOMMENDATIONS -->
+            <!-- ================================================= -->
+
+            <section class="recommendations" id="recommendations">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <span class="mini-label">
+                            HARDEN YOUR SECURITY
+                        </span>
+
+                        <h2>
+                            Go beyond password strength
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="recommendation-grid">
+
+
+                    <div class="recommendation-card">
+
+                        <div class="recommendation-icon">
+                            ✦
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Use unique passwords
+                            </h3>
+
+                            <p>
+                                Never reuse the same important
+                                password across different services.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="recommendation-card">
+
+                        <div class="recommendation-icon">
+                            ◈
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Use a password manager
+                            </h3>
+
+                            <p>
+                                Generate and store long,
+                                random passwords securely.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="recommendation-card">
+
+                        <div class="recommendation-icon">
+                            ◎
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Enable MFA
+                            </h3>
+
+                            <p>
+                                Multi-factor authentication adds
+                                another layer of account protection.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="recommendation-card">
+
+                        <div class="recommendation-icon">
+                            ⬡
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Consider passkeys
+                            </h3>
+
+                            <p>
+                                Where supported, passkeys can reduce
+                                reliance on passwords.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ================================================= -->
+            <!-- SECURITY GUIDE -->
+            <!-- ================================================= -->
+
+            <section class="glass-card guide-section" id="guide">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <span class="mini-label">
+                            SECURITY KNOWLEDGE
+                        </span>
+
+                        <h2>
+                            What this dashboard checks
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="guide-grid">
+
+
+                    <div class="guide-column">
+
+                        <div class="guide-title good">
+                            <span>✓</span>
+                            Detectable locally
+                        </div>
+
+                        <ul>
+
+                            <li>
+                                Password length
+                            </li>
+
+                            <li>
+                                Character diversity
+                            </li>
+
+                            <li>
+                                Repeated characters
+                            </li>
+
+                            <li>
+                                Sequential patterns
+                            </li>
+
+                            <li>
+                                Common password patterns
+                            </li>
+
+                            <li>
+                                Keyboard patterns
+                            </li>
+
+                            <li>
+                                Estimated entropy
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+
+                    <div class="guide-column">
+
+                        <div class="guide-title warning">
+                            <span>!</span>
+                            Cannot guarantee
+                        </div>
+
+                        <ul>
+
+                            <li>
+                                That a password has never appeared
+                                in a breach
+                            </li>
+
+                            <li>
+                                Protection from phishing
+                            </li>
+
+                            <li>
+                                Protection from malware
+                            </li>
+
+                            <li>
+                                Security of a website's backend
+                            </li>
+
+                            <li>
+                                Protection from stolen sessions
+                            </li>
+
+                            <li>
+                                That a password is impossible to crack
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ================================================= -->
+            <!-- FOOTER -->
+            <!-- ================================================= -->
+
+            <footer>
+
+                <div>
+                    <span class="footer-logo">
+                        ✦ FortiPass
+                    </span>
+
+                    <span>
+                        Local password analysis
+                    </span>
+                </div>
+
+                <div>
+                    Never share your password with anyone.
+                </div>
+
+            </footer>
+
+
+        </main>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
